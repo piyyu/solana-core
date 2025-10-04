@@ -13,6 +13,8 @@ import {
 import '@solana/wallet-adapter-react-ui/styles.css';
 import Airdrop from './components/Airdrop';
 import ShowBalance from './components/ShowBalance';
+import SendTokens from './components/SendTokens';
+import SignMessage from './components/SignMessage';
 
 function App() {
 
@@ -20,12 +22,16 @@ function App() {
     <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'space-between'}}>
+            <WalletMultiButton />
+            {/* <WalletDisconnectButton /> */}
+          </div>
           <div><h1>Solana Faucet</h1></div>
-          <WalletMultiButton />
-          <WalletDisconnectButton />
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
             <Airdrop />
             <ShowBalance />
+            <SendTokens />
+            <SignMessage />
           </div>
         </WalletModalProvider>
       </WalletProvider>
